@@ -3,6 +3,7 @@ import { useSlideContext } from "@/context/slide.context";
 import getSubThemes from "@/root/funtions/getSubThemes";
 import { useEffect } from "react";
 import { IntermediateForm } from "./intermediate-form/IntermediateForm";
+import ParametersForm from "./ParametersForm";
 
 export default function Generator() {
     const { slideContextPrompt } = useSlideContext();
@@ -10,9 +11,11 @@ export default function Generator() {
     return (
         <Layout>
             <div>
-                <IntermediateForm/>
+                <ParametersForm />
+                <IntermediateForm />
                 {slideContextPrompt}
             </div>
+
         </Layout>
     );
 }

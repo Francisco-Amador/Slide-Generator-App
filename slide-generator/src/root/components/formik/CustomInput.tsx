@@ -4,7 +4,7 @@ import classNames from "classnames";
 import { formsClasses } from "./formsClasses";
 
 
-type InputType = "text" | "number" | "password" | "email" | "date" | "time" | "file" | "radio" | "searchTerm";
+type InputType = "text" | "number" | "password" | "email" | "date" | "time" | "file" | "radio" | "searchTerm" | "submit";
 
 interface CustomInputProps extends InputHTMLAttributes<HTMLInputElement> {
     label: string;
