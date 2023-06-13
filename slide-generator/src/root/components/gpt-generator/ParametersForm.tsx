@@ -4,12 +4,12 @@ import { Formik, Form } from 'formik';
 import CustomSelect from "../formik/CustomSelect";
 import { ItemCounter } from "../formik/ItemCounter";
 import { useEffect, useState } from "react";
+import { useSlideContext } from "@/context/slide.context";
 
 interface FormValues {
     theme: string;
     type: string;
     language: string;
-    subThemesNumber: number;
 }
 const options = [
     { option: "Select type" },
@@ -29,15 +29,14 @@ const languages = [
 export default function ParametersForm() {
 
     const [subThemesNumber, setSubThemesNumber] = useState<number>(10);
+    const { setSlideContextPrompt } = useSlideContext();
+    const initialValues: FormValues = {} as FormValues;
 
-    const initialValues: FormValues = { subThemesNumber: subThemesNumber } as FormValues;
-    useEffect(() => {
-        console.log(subThemesNumber)
-
-    }, [subThemesNumber])
-
-    const onSubmit = () => {
-        
+    const onSubmit = (values: FormValues) => {
+        const { theme, type, language } = values;
+        const propmt = "Necesito exactamente "+subThemesNumber+" subtemas sobre "+theme.toUpperCase()+" de tipo "+type.toUpperCase()+" en el idioma "+language+", solamente los subtemas, deben ir separados por &, sin introducción ni conclusión, sin en listar ni enumerar, sin mensaje al inicio. No quiero la respuesta en formato lista. No quiero que salgan acompañados de números al inicio."
+        console.log(propmt, "000000000000000000000000000000")
+        setSlideContextPrompt(propmt);
     }
     return (
         <Formik initialValues={initialValues} validationSchema={paramsMessage} onSubmit={onSubmit}>

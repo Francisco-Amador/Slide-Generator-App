@@ -39,7 +39,11 @@ export const useSlideContext = () => {
 
 const getGPT = async (prompt1: string): Promise<string> => {
     try {
-        const prompt = prompt1 || "Necesito exactamente ' 15 ' subtemas sobre 'SOBRE POBLACION' de tipo 'FORMAL' en el idioma 'ESPAÑOL', solamente los subtemas, deben ir separados por &, sin introducción ni conclusión, sin en listar ni enumerar, sin mensaje al inicio. No quiero la respuesta en formato lista. No quiero que salgan acompañados de números al inicio.";
+        console.log(prompt1)
+        if(prompt1.length < 2) {
+            return ""
+        }
+        const prompt = prompt1;
         const payload = {
             model: "text-davinci-003",
             prompt,
@@ -60,7 +64,7 @@ const getGPT = async (prompt1: string): Promise<string> => {
             });
 
             const json = response.data.choices[0].text as string;
-
+            console.log(json);
             return json;
         } catch (error) {
             console.error(error);
