@@ -1,11 +1,13 @@
 import Layout from "@/Layout/Layout";
+import { useSlideContext } from "@/context/slide.context";
 
 export default function Generator () {
-    return(
+    const {slideContextValue} = useSlideContext();
+    return (
         <Layout>
             <div>
-                HOLA ESTA ES UNA PRUEBA
+                {slideContextValue}
             </div>
         </Layout>
-    )
+    );
 }
