@@ -1,20 +1,20 @@
 
 interface subThemeProp {
     subTheme: string;
+    handleSubThemeChange:any
 }
-export default function CardTheme({ subTheme }: subThemeProp) {
+export default function CardTheme({ subTheme,handleSubThemeChange }: subThemeProp) {
     return (
-        <div className="rounded-lg bg-white p-4 m-4 sm:p-6">
-                <h3 className="mt-0.5 text-lg font-medium text-gray-900">
-                    {subTheme}
-                </h3>
-            <div className="mt-4 flex flex-wrap gap-1">
-                <button
-                    className="whitespace-nowrap rounded-full bg-purple-100 px-2.5 py-0.5 text-xs text-purple-600"
-                >
-                    Delete
+        <div className="w-full h-full p-4">
+        <div className="flex flex-col justify-center items-center border-4 border-blue-200 p-6 rounded-lg bg-white h-full">
+            <h2 className="text-lg text-gray-900 font-medium title-font mb-2 text-center">{subTheme}</h2>
+            <div className="flex justify-center mt-4">
+                <button onClick={handleSubThemeChange} className="bg-white hover:bg-blue-200 border-2 border-blue-600 text-blue-500 font-bold py-2 px-4 rounded">
+                    Delete subTheme
                 </button>
             </div>
         </div>
-    )
+    </div>
+    );
+
 }

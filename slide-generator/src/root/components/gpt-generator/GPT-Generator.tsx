@@ -11,7 +11,6 @@ export default function Generator() {
         <Layout>
             <div>
                 <IntermediateForm/>
-                {slideContextPrompt}
             </div>
         </Layout>
     );
