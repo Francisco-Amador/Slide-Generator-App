@@ -13,8 +13,11 @@
         "Creativo",
         "davinci",
         "Formik",
+        "frases",
         "Hola",
-        "openai"
+        "openai",
+        "párrafos",
+        "viñetas"
     ],
     "dictionaries": [
         "project-words"

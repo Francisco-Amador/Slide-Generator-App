@@ -6,14 +6,13 @@ import { IntermediateForm } from "./intermediate-form/IntermediateForm";
 import ParametersForm from "./ParametersForm";
 
 export default function Generator() {
-    const { slideContextPrompt } = useSlideContext();
+    const { slideContextResponse } = useSlideContext();
 
     return (
         <Layout>
             <div>
                 <ParametersForm />
-                <IntermediateForm />
-                {slideContextPrompt}
+                {slideContextResponse.length > 2 ? (<IntermediateForm />) : ""}
             </div>
 
         </Layout>
