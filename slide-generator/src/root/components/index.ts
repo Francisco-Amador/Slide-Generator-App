@@ -1,4 +1,4 @@
-export * from './Footer';
+export * from './footer';
 export * from './formik';
 export * from './gpt-generator';
 export * from './NavBar';
