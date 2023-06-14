@@ -7,7 +7,7 @@ import { getSubThemes } from "@/root/funtions";
 export function IntermediateForm() {
     const schemas = ["viñetas", "párrafos", "frases"];
     const { slideContextResponse } = useSlideContext();
-
+    const { setSlideContextPrompt } = useSlideContext();
     const subThemes = getSubThemes(slideContextResponse);
     const [selectedSchemas, setSelectedSchemas] = useState<string[]>([]);
     const [selectedSubThemes, setSelectedSubThemes] = useState<string[]>(subThemes);
@@ -26,6 +26,22 @@ export function IntermediateForm() {
             setSelectedSubThemes(selectedSubThemes.filter((item) => item !== subTheme));
         }
     };
+    const getRandomNumber = () => {
+        return Math.floor(Math.random() * selectedSchemas.length) + 1;
+      };
+      const setSlidePrompt = (schema: string) => {
+        const prompt =schema /* aquí debes definir el valor de prompt */;
+        setSlideContextPrompt(prompt);
+      };
+      
+      const handleClick = () => {
+        selectedSubThemes.forEach((subTheme) => {
+          const randomNumber = getRandomNumber();
+          setSlidePrompt(selectedSchemas[randomNumber - 1] as string);
+        });
+      };
+      
+    };
     return (
         <div >
             <h2 className=" text-3xl font-bold mb-6">Select your preferred subThemes and outline types (bullets, paragraphs, sentences)</h2>
@@ -38,6 +54,9 @@ export function IntermediateForm() {
                 {selectedSubThemes.map((subTheme, index) => (
                     <CardTheme key={index} subTheme={subTheme} handleSubThemeChange={handleSubThemeChange} />
                 ))}
+            </div>
+            <div>
+                <button onClick={handleClick}>Generate</button>
             </div>
         </div>
     );

@@ -1,6 +1,6 @@
 import Footer from "@/root/components/footer/Footer";
 import NavBar from "@/root/components/NavBar/NavBar";
-import ProductSection from "@/root/components/product-info/ProductSection";
+import ProductSection from "@/root/components/Product-Section/ProductSection";
 import { ReactNode } from "react";
 
 type LayoutProps = {

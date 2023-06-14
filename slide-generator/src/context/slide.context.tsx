@@ -59,10 +59,9 @@ const getGPT = async (prompt1: string): Promise<string> => {
             const response = await axios.post("https://api.openai.com/v1/completions", payload, {
                 headers: {
                     "Content-Type": "application/json",
-                    Authorization: "Bearer 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",
+                     Authorization: "Bearer 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",//TODO pasarlo env
                 },
             });
-
             const json = response.data.choices[0].text as string;
             console.log(json);
             return json;
