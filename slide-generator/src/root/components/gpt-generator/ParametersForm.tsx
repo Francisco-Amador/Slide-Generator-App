@@ -34,15 +34,14 @@ export default function ParametersForm() {
 
     const onSubmit = (values: FormValues) => {
         const { theme, type, language } = values;
-        const propmt = "Necesito exactamente " + subThemesNumber + " subtemas sobre " + theme.toUpperCase() + " de tipo " + type.toUpperCase() + " en el idioma " + language + ", solamente los subtemas, deben ir separados por &, sin introducción ni conclusión, sin en listar ni enumerar, sin mensaje al inicio. No quiero la respuesta en formato lista. No quiero que salgan acompañados de números al inicio."
-        console.log(propmt, "000000000000000000000000000000")
-        setSlideContextPrompt(propmt);
+        const prompt = "Necesito exactamente " + subThemesNumber + " subtemas sobre " + theme.toUpperCase() + " de tipo " + type.toUpperCase() + " en el idioma " + language + ", solamente los subtemas, deben ir separados por &, sin introducción ni conclusión, sin en listar ni enumerar, sin mensaje al inicio. No quiero la respuesta en formato lista. No quiero que salgan acompañados de números al inicio."
+        setSlideContextPrompt(prompt);
     }
     return (
         <div id="parametersForm">
             <Formik initialValues={initialValues} validationSchema={paramsMessage} onSubmit={onSubmit}>
-                <div className=" flex flex-col justify-center items-center w-full p-4 h-auto mb-60 m-10">
-                    <h1 className="text-2xl font-bold mb-4 text-center">Purchase Form</h1>
+                <div className="flex flex-col justify-center items-center w-screen p-4 h-auto mb-60 m-10">
+                    <h1 className="text-2xl font-bold mb-4 text-center">Parameters Form</h1>
                     <Form className="flex flex-col justify-center  w-2/4">
                         <div className="flex flex-col justify-center items-center">
                             <CustomInput label="Theme:" name="theme" inputType="text" placeholder="Type a subject" />
@@ -60,7 +59,12 @@ export default function ParametersForm() {
                                     </option>
                                 ))}
                             </CustomSelect>
-                            <ItemCounter setCounter={setSubThemesNumber} />
+                            <div className="flex flex-row m-4">
+                                <label className="m-4">SubThemes:</label>
+                                <ItemCounter setCounter={setSubThemesNumber} />
+
+                            </div>
+
                             <button className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" type="submit"> Send </button>
                         </div>
                     </Form>

@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import CardTheme from "./CardTheme";
 import CheckBoxSchema from "./CheckBoxScheme";
 import { useSlideContext } from "@/context/slide.context";
 import { getSubThemes } from "@/root/funtions";
+import getPromt from "@/root/funtions/getPromt";
 
 export function IntermediateForm() {
     const schemas = ["viñetas", "párrafos", "frases"];
@@ -22,26 +23,21 @@ export function IntermediateForm() {
     };
 
     const handleSubThemeChange = (subTheme: string) => {
-        if (selectedSubThemes.includes(subTheme) &&  selectedSubThemes.length > 5 ) {
+        if (selectedSubThemes.includes(subTheme) && selectedSubThemes.length > 5) {
             setSelectedSubThemes(selectedSubThemes.filter((item) => item !== subTheme));
         }
     };
     const getRandomNumber = () => {
         return Math.floor(Math.random() * selectedSchemas.length) + 1;
-      };
-      const setSlidePrompt = (schema: string) => {
-        const prompt =schema /* aquí debes definir el valor de prompt */;
-        setSlideContextPrompt(prompt);
-      };
-      
-      const handleClick = () => {
-        selectedSubThemes.forEach((subTheme) => {
-          const randomNumber = getRandomNumber();
-          setSlidePrompt(selectedSchemas[randomNumber - 1] as string);
-        });
-      };
-      
     };
+
+    const handleClick = () => {
+        selectedSubThemes.forEach((subTheme) => {
+            const randomNumber = getRandomNumber();
+            getPromt(subTheme,selectedSchemas[randomNumber - 1] as string);
+        });
+    };
+
     return (
         <div >
             <h2 className=" text-3xl font-bold mb-6">Select your preferred subThemes and outline types (bullets, paragraphs, sentences)</h2>
