@@ -20,18 +20,18 @@ export function IntermediateForm() {
         }
 
     };
-    const getRandomNumber = () => {
-        return Math.floor(Math.random() * selectedSchemas.length);
+    const getRandomNumber = async () => {
+        return await Math.floor(Math.random() * selectedSchemas.length);
     };
     const handleClick = () => {
-        
-        selectedSubThemes.map((subTheme, index) => {
-            const random = getRandomNumber()
-            if(index < 10 ){
-                const prompt = getPrompt(subTheme,random);
-                console.log(prompt)
-            }
-        });
+
+        for (let i = 0; i < selectedSubThemes.length && i < 10; i++) {
+            const subTheme = selectedSubThemes[i];
+            const random = Math.floor(Math.random() * selectedSchemas.length);
+          //  console.log("")
+            const prompt = getPrompt(subTheme, random);
+            console.log(prompt);
+        }
     };
     return (
         <div >
