@@ -14,11 +14,11 @@ const CustomSelect: React.FC<CustomSelectProps> = ({ label, ...selectProps }) =>
     return (
         <>
             <div className="mb-4 w-full">
-                <label htmlFor={field.name} className="">
+                <label htmlFor={field.name} className="text-white font-bold">
                     {label}
                 </label>
                 <select {...field} {...selectProps} className={selectClassName} placeholder={selectProps.placeholder} />
-                {meta.touched && meta.error && <div className="border-red-600 text-red-950">{meta.error}</div>}
+                {meta.touched && meta.error && <div className="border-red-600  text-red-500">{meta.error}</div>}
             </div>
         </>
     );

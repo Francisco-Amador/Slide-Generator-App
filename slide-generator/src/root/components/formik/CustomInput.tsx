@@ -20,7 +20,7 @@ const CustomInput: React.FC<CustomInputProps> = ({ label, inputType, ...inputPro
     return (
         <>
             <div className="mb-2 flex flex-col items-start w-full">
-                <label className="text-start ">{label}</label>
+                <label className="text-white font-bold text-start ">{label}</label>
                 <div className="relative flex items-center w-full">
                     <input {...field} {...inputProps} type={inputType} className={inputClassName} />
                 </div>

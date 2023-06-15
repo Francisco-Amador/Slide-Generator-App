@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 export default function Footer() {
     return (
-        <footer className="bg-slate-700  shadow dark:bg-gray-900">
+        <footer className="bg-gray-800 shadow dark:bg-gray-900">
             <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
                 <div className="sm:flex sm:items-center sm:justify-between">
                     <div className="flex items-center mb-4 sm:mb-0">
@@ -25,5 +25,4 @@ export default function Footer() {
             </div>
         </footer>
     )
-
 }

@@ -11,7 +11,7 @@ const Layout = ({ children }: LayoutProps) => {
         <>
             <NavBar/>
             <ProductSection/>
-            <main className="bg-black flex justify-center items-center ">{children}</main>
+            <main className="bg-gray-900 flex justify-center items-center ">{children}</main>
             <Footer></Footer>
         </>
     );

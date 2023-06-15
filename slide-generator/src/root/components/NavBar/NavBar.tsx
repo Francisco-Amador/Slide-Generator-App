@@ -1,7 +1,7 @@
 import Link from "next/link";
 export default function NavBar() {
     return (
-            <nav className="bg-slate-700 border-gray-200 dark:bg-gray-900">
+            <nav className="bg-gradient-to-r from-purple-900 via-purple-800 to-purple-700 border-gray-200 dark:bg-gray-900">
                 <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                     <div className="flex items-center">
                         <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">
