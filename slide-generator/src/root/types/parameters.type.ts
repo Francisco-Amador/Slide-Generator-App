@@ -1,4 +1,5 @@
 export type Parameters = {
     language: string,
-    countSubtheme: number
+    countSubtheme: number,
+    theme : string
 }

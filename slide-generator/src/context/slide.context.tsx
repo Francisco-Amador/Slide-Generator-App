@@ -7,7 +7,7 @@ export interface ContextState {
     slideContextResponse: string;
     setSlideContextResponse: Dispatch<SetStateAction<string>>;
     setStore: Dispatch<SetStateAction<Parameters>>;
-    store:Object;
+    store:Parameters;
 }
 
 export const SlideContext = createContext<ContextState>({} as ContextState);
@@ -15,7 +15,7 @@ export const SlideContext = createContext<ContextState>({} as ContextState);
 export const SlideProvider = ({ children }: { children: any }) => {
     const [slideContextPrompt, setSlideContextPrompt] = useState<string>('');
     const [slideContextResponse, setSlideContextResponse] = useState<string>('');
-    const [store, setStore] = useState<Parameters>({ language: "", countSubtheme: 0 });
+    const [store, setStore] = useState<Parameters>({ language: "", countSubtheme: 0 ,theme:""});
     useEffect(() => {
         const fetchData = async () => {
             setSlideContextResponse(await getGPT(slideContextPrompt));

@@ -6,7 +6,7 @@ import CardThemeList from "./CardThemeList";
 
 export function IntermediateForm() {
     const schemas = [1, 2, 3];
-    const { slideContextResponse } = useSlideContext();
+    const { slideContextResponse , store } = useSlideContext();
     const subThemes = getSubThemes(slideContextResponse);
     const [selectedSchemas, setSelectedSchemas] = useState<number[]>([]);
     const [selectedSubThemes, setSelectedSubThemes] = useState<string[]>(subThemes);
@@ -28,8 +28,8 @@ export function IntermediateForm() {
         for (let i = 0; i < selectedSubThemes.length && i < 10; i++) {
             const subTheme = selectedSubThemes[i];
             const random = Math.floor(Math.random() * selectedSchemas.length);
-          //  console.log("")
-            const prompt = getPrompt(subTheme, random);
+            console.log("")
+            const prompt = getPrompt(subTheme, random, store.theme);
             console.log(prompt);
         }
     };

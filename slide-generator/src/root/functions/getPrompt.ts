@@ -1,19 +1,23 @@
-export default function getPrompt(subtheme: string, schema: number) {
+export default function getPrompt(subtheme: string, schema: number , theme: string) {
+
         const promptMap = [
-                {
-                        subTheme: subtheme,
-                        descripcion: "Completa la descripción con un máximo de 15 palabras",
-                        items: ["", "", ""],
+                {       
+                        "theme": theme ,
+                        "subTheme": subtheme,
+                        "descripcion": "Completa la descripción con un máximo de 15 palabras",
+                        "items": ["", "", ""],
                 },
                 {
-                        subTheme: subtheme,
-                        prompt1: "Define el valor de prompt para 'párrafos'",
-                        prompt2: "Define el valor de prompt para 'párrafos'",
+                        "theme": theme ,
+                        "subTheme": subtheme,
+                        "descripcion1": "minimo 15 palabras y maximo 16 palabras",
+                        "descripcion2": "minimo 15  palabras y maximo 16 palabras",
                 },
                 {
-                        subTheme: subtheme,
-                        prompt: "Define el valor de prompt para 'frases'",
+                        "theme": theme,
+                        "subTheme": subtheme,
+                        "descripcion":"Define el valor de prompt para 'minimo 20 palabras y maximo 30",
                 },
         ];
-        return promptMap[schema];
+        return "no interactues con migo, rellena lo que falta"+ promptMap[schema];
 }
