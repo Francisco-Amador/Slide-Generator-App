@@ -1,11 +1,13 @@
 import axios from "axios";
 import { createContext, useContext, useState, useEffect, Dispatch, SetStateAction } from "react";
-
+import {Parameters} from "@/root/types"
 export interface ContextState {
     slideContextPrompt: string;
     setSlideContextPrompt: Dispatch<SetStateAction<string>>;
     slideContextResponse: string;
-    setSlideContextResponse:  Dispatch<SetStateAction<string>>;
+    setSlideContextResponse: Dispatch<SetStateAction<string>>;
+    setStore: Dispatch<SetStateAction<Parameters>>;
+    store:Object;
 }
 
 export const SlideContext = createContext<ContextState>({} as ContextState);
@@ -13,7 +15,7 @@ export const SlideContext = createContext<ContextState>({} as ContextState);
 export const SlideProvider = ({ children }: { children: any }) => {
     const [slideContextPrompt, setSlideContextPrompt] = useState<string>('');
     const [slideContextResponse, setSlideContextResponse] = useState<string>('');
-
+    const [store, setStore] = useState<Parameters>({ language: "", countSubtheme: 0 });
     useEffect(() => {
         const fetchData = async () => {
             setSlideContextResponse(await getGPT(slideContextPrompt));
@@ -23,7 +25,8 @@ export const SlideProvider = ({ children }: { children: any }) => {
     }, [slideContextPrompt]);
 
     return (
-        <SlideContext.Provider value={{ slideContextPrompt, setSlideContextPrompt, slideContextResponse, setSlideContextResponse }}>
+        <SlideContext.Provider value={{ slideContextPrompt, setSlideContextPrompt, slideContextResponse, setSlideContextResponse, 
+            store, setStore }}>
             {children}
         </SlideContext.Provider>
     );
@@ -40,7 +43,7 @@ export const useSlideContext = () => {
 const getGPT = async (prompt1: string): Promise<string> => {
     try {
         console.log(prompt1)
-        if(prompt1.length < 2) {
+        if (prompt1.length < 2) {
             return ""
         }
         const prompt = prompt1;
@@ -51,7 +54,7 @@ const getGPT = async (prompt1: string): Promise<string> => {
             top_p: 1,
             frequency_penalty: 0,
             presence_penalty: 0,
-            max_tokens: 50,
+            max_tokens: 5,
             n: 1,
         };
 
@@ -59,7 +62,7 @@ const getGPT = async (prompt1: string): Promise<string> => {
             const response = await axios.post("https://api.openai.com/v1/completions", payload, {
                 headers: {
                     "Content-Type": "application/json",
-                     Authorization: "Bearer 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",//TODO pasarlo env
+                    Authorization: "Bearer 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",//TODO pasarlo env
                 },
             });
             const json = response.data.choices[0].text as string;

@@ -1,3 +1,3 @@
 export {default as Generator} from './GPT-Generator';
-
-export {default as BuyForm} from './ParametersForm';
+export * from './intermediate-form';
+export {default as ParametersForm} from './ParametersForm';

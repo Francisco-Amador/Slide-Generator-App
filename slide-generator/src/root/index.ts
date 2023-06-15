@@ -1,2 +1,4 @@
 export * from './components';
-export * from './funtions';
+export * from './functions';
+export * from './selector';
+export * from './types';
