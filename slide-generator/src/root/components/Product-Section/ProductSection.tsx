@@ -8,7 +8,7 @@ export default function ProductSection() {
             <p className="lg:pl-6 lg:w-2/3 mx-auto leading-relaxed text-base">
                 Our innovative platform gives you the perfect tool to create impactful and professional presentations in minutes. With our system, you ll be able to generate copy-ready text in PowerPoint and apply custom styles to create visually appealing slides.Forget about tedious and boring work hours, and bring your presentations to life with our intuitive and easy-to-use platform. Now, you ll be able to grab your audience s attention and convey your ideas effectively. Join us and discover how to stand out in your presentations easily and successfully!
             </p>
-            <div className="container px-5 py-24 mx-auto">
+            <div className=" px-5 py-24 mx-auto">
                 <div className="flex flex-wrap -mx-4 -mb-10 text-center">
                     <div className="sm:w-1/2 mb-10 px-4">
                         <div className="rounded-lg h-64 overflow-hidden">

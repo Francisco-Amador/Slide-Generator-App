@@ -25,7 +25,7 @@ export default function ParametersForm() {
     }
     return (
         <Formik id="parametersForm" initialValues={initialValues} validationSchema={paramsMessage} onSubmit={onSubmit}>
-            <div className="flex flex-col justify-center items-center w-screen p-4 h-auto mb-60 m-10">
+            <div className="flex flex-col justify-center items-center w-full p-4 h-auto ">
                 <h2 className="text-white text-2xl font-bold mb-4 text-center">Parameters Form</h2>
                 <Form className="border-2 p-4 rounded-lg border-blue-500 flex flex-col justify-center  w-2/4">
                     <div className="flex flex-col justify-center items-center">

@@ -1,4 +1,4 @@
-import Footer from "@/root/components/footer/Footer";
+import Footer from "@/root/components/Footer/Footer";
 import NavBar from "@/root/components/NavBar/NavBar";
 import ProductSection from "@/root/components/Product-Section/ProductSection";
 import { ReactNode } from "react";
@@ -11,7 +11,7 @@ const Layout = ({ children }: LayoutProps) => {
         <>
             <NavBar/>
             <ProductSection/>
-            <main className="bg-gray-900 flex justify-center items-center ">{children}</main>
+            <main className="bg-gray-900 flex justify-center items-center  ">{children}</main>
             <Footer></Footer>
         </>
     );

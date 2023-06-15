@@ -13,23 +13,24 @@ export function IntermediateForm() {
     const handleSchemaChange = (schema: number) => {
         if (selectedSchemas.includes(schema)) {
             setSelectedSchemas(selectedSchemas.filter((item) => item !== schema));
+
         } else {
             setSelectedSchemas([...selectedSchemas, schema]);
+
         }
-        console.log(selectedSchemas)
+
     };
     const getRandomNumber = () => {
-        return Math.floor(Math.random() * selectedSchemas.length) + 1;
+        return Math.floor(Math.random() * selectedSchemas.length);
     };
     const handleClick = () => {
+
+        
         const n = getRandomNumber()
-        console.log(n)
+        console.log(n, "aleatorio")
         const shemassel = selectedSchemas[n]
-        console.log(shemassel)
-        /*        selectedSubThemes.forEach((subTheme) => {
-                   const randomNumber = getRandomNumber();
-                   getPrompt(subTheme, randomNumber);
-               });  */
+        console.log("type", shemassel)
+
     };
     return (
         <div >
@@ -40,8 +41,8 @@ export function IntermediateForm() {
                 ))}
             </div>
             <CardThemeList selectedSubThemes={selectedSubThemes} setSelectedSubThemes={setSelectedSubThemes} />
-            <div>
-                <button onClick={handleClick}>Generate</button>
+            <div className="flex justify-center">
+                <button className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" onClick={handleClick}>Generate</button>
             </div>
         </div>
     );
