@@ -24,13 +24,14 @@ export function IntermediateForm() {
         return Math.floor(Math.random() * selectedSchemas.length);
     };
     const handleClick = () => {
-
         
-        const n = getRandomNumber()
-        console.log(n, "aleatorio")
-        const shemassel = selectedSchemas[n]
-        console.log("type", shemassel)
-
+        selectedSubThemes.map((subTheme, index) => {
+            const random = getRandomNumber()
+            if(index < 10 ){
+                const prompt = getPrompt(subTheme,random);
+                console.log(prompt)
+            }
+        });
     };
     return (
         <div >
