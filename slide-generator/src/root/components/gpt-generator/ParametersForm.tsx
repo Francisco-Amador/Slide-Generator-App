@@ -7,6 +7,7 @@ import { useState } from "react";
 import { useSlideContext } from "@/context/slide.context";
 import { Parameters, firstPrompt } from "@/root/"
 import { options, languages } from '@/root/selector'
+import { motion } from "framer-motion";
 interface FormValues {
     theme: string;
     type: string;
@@ -24,21 +25,26 @@ export default function ParametersForm() {
         setSlideContextPrompt(prompt);
     }
     return (
-        <Formik id="parametersForm" initialValues={initialValues} validationSchema={paramsMessage} onSubmit={onSubmit}>
-            <div className="flex flex-col justify-center items-center w-full p-4 h-auto ">
-                <h2 className="text-white text-2xl font-bold mb-4 text-center">Parameters Form</h2>
-                <p className="text-white text-center m-4">Add here your title and other parameters to generate your slides</p>
-                <Form className="shadow-lg shadow-gray-800 bg-gray-800 border-2 p-4 rounded-lg border-slate-700 flex flex-col justify-center  w-2/4">
+        <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="flex flex-col justify-center items-center w-full p-4 h-auto"
+        >
+            <h2 className="text-white text-2xl font-bold mb-4 text-center">Parameters Form</h2>
+            <p className="text-white text-center m-4">Add here your title and other parameters to generate your slides</p>
+            <Formik id="parametersForm" initialValues={initialValues} validationSchema={paramsMessage} onSubmit={onSubmit}>
+                <Form className="shadow-lg shadow-gray-800 bg-gray-800 border-2 p-4 rounded-lg border-slate-700 flex flex-col justify-center w-2/4">
                     <div className="flex flex-col justify-center items-center">
                         <CustomInput label="Theme:" name="theme" inputType="text" placeholder="Type a subject" />
-                        <CustomSelect label="Type" name="type" >
+                        <CustomSelect label="Type" name="type">
                             {options.map((option) => (
                                 <option key={option.option} value={option.option}>
                                     {option.option}
                                 </option>
                             ))}
                         </CustomSelect>
-                        <CustomSelect label="Language" name="language" >
+                        <CustomSelect label="Language" name="language">
                             {languages.map((language) => (
                                 <option key={language.language} value={language.language}>
                                     {language.language}
@@ -46,13 +52,20 @@ export default function ParametersForm() {
                             ))}
                         </CustomSelect>
                         <div className="flex flex-row m-4">
-                            <label className="text-white  m-4 mr-2 p-2">SubThemes:</label>
+                            <label className="text-white m-4 mr-2 p-2">SubThemes:</label>
                             <ItemCounter setCounter={setSubThemesNumber} />
                         </div>
-                        <button className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" type="submit"> Send </button>
+                        <motion.button
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                            type="submit"
+                        >
+                            Send
+                        </motion.button>
                     </div>
                 </Form>
-            </div>
-        </Formik>
+            </Formik>
+        </motion.div>
     );
 }
