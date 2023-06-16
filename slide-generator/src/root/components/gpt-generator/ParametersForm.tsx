@@ -27,7 +27,8 @@ export default function ParametersForm() {
         <Formik id="parametersForm" initialValues={initialValues} validationSchema={paramsMessage} onSubmit={onSubmit}>
             <div className="flex flex-col justify-center items-center w-full p-4 h-auto ">
                 <h2 className="text-white text-2xl font-bold mb-4 text-center">Parameters Form</h2>
-                <Form className="border-2 p-4 rounded-lg border-blue-500 flex flex-col justify-center  w-2/4">
+                <p className="text-white text-center m-4">Add here your title and other parameters to generate your slides</p>
+                <Form className="shadow-lg shadow-gray-800 bg-gray-800 border-2 p-4 rounded-lg border-slate-700 flex flex-col justify-center  w-2/4">
                     <div className="flex flex-col justify-center items-center">
                         <CustomInput label="Theme:" name="theme" inputType="text" placeholder="Type a subject" />
                         <CustomSelect label="Type" name="type" >

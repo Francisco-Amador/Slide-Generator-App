@@ -35,7 +35,7 @@ export function IntermediateForm() {
     };
     return (
         <div >
-            <h2 className="text-center text-3xl font-bold mb-6">Select your preferred subThemes and outline types (bullets, paragraphs, sentences)</h2>
+            <h2 className="text-white text-center text-3xl font-bold mb-6">Select your preferred subThemes and outline types (bullets, paragraphs, sentences)</h2>
             <div className="flex flex-row justify-center items-center">
                 {schemas.map((schema, index) => (
                     <CheckBoxSchema key={index} schema={schema} handleSchemaChange={handleSchemaChange} />
