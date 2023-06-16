@@ -11,18 +11,17 @@ export interface ContextState {
     setSlideContextResponse: Dispatch<SetStateAction<string>>;
     setStore: Dispatch<SetStateAction<Parameters>>;
     store: Parameters;
-    ///setSlideGeneratePrompt: Dispatch<SetStateAction<string>>;
-    slideGenerate: string[];
     generateSlide: (prompts: string[]) => void;
+    setSlide: Dispatch<SetStateAction<JSON[]>>;
+    slide: JSON[]
 }
 
 export const SlideContext = createContext<ContextState>({} as ContextState);
 
 export const SlideProvider = ({ children }: { children: any }) => {
     const [slideContextPrompt, setSlideContextPrompt] = useState<string>('');
-        const [slideGeneratePrompt, setSlideGeneratePrompt] = useState<string>('');
+    const [slide, setSlide] = useState<JSON[]>([]);
     const [slideContextResponse, setSlideContextResponse] = useState<string>('');
-    const [slideGenerate, setSlideGenerate] = useState<string[]>([]);
     const [store, setStore] = useState<Parameters>({ language: "", countSubtheme: 0, theme: "" });
 
     useEffect(() => {
@@ -36,9 +35,8 @@ export const SlideProvider = ({ children }: { children: any }) => {
         console.log(prompts, "all prompt");
         await Promise.all(
             prompts.map(async (prompt) => {
-                console.log(prompt);
                 const newSlide = await getGPT(prompt);
-                setSlideGenerate([...slideGenerate, newSlide]);
+                setSlide((prevSlide) => [...prevSlide, JSON.parse(newSlide)]);
             })
         );
     };
@@ -47,7 +45,7 @@ export const SlideProvider = ({ children }: { children: any }) => {
     return (
         <SlideContext.Provider value={{
             slideContextPrompt, setSlideContextPrompt, slideContextResponse, setSlideContextResponse,
-            store, setStore, slideGenerate, generateSlide
+            store, setStore, generateSlide, slide, setSlide
         }}>
             {children}
         </SlideContext.Provider>
@@ -65,7 +63,7 @@ export const useSlideContext = () => {
 
 const getGPT = async (prompt1: string): Promise<string> => {
     try {
-        console.log(prompt1)
+      //  console.log(prompt1)
         if (prompt1.length < 2) {
             return ""
         }
@@ -77,7 +75,7 @@ const getGPT = async (prompt1: string): Promise<string> => {
             top_p: 1,
             frequency_penalty: 0,
             presence_penalty: 0,
-            max_tokens: 100,
+            max_tokens: 200,
             n: 1,
         };
         try {

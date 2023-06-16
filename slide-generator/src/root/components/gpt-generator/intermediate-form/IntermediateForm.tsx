@@ -24,7 +24,7 @@ export function IntermediateForm() {
         const newPrompts = await Promise.all(
             selectedSubThemes.slice(0, 10).map(async (subTheme) => {
                 const random = Math.floor(Math.random() * selectedSchemas.length);
-                const newPrompt = getPrompt(subTheme, random, store.theme);
+                const newPrompt = getPrompt(subTheme, random, store);
                 console.log(newPrompt);
                 await setPrompts(prevPrompts => [...prevPrompts, newPrompt]);
                 return newPrompt;

@@ -8,16 +8,14 @@ import ParagraphSlide from "../slides/paragraph-slide/ParagraphSlide";
 import MainSlide from "../slides/main-slide/MainSlide";
 
 export default function Generator() {
-    const { slideContextResponse } = useSlideContext();
+    const { slideContextResponse, slide} = useSlideContext();
 
     return (
         <Layout>
             <div className="w-full">
                 <ParametersForm />
-                {slideContextResponse.length > 2 ? (<IntermediateForm />) : ""}
-                <MainSlide/>
+                {slideContextResponse.length > 2 ? (slide.length > 0 ? (<MainSlide />) : (<IntermediateForm />)) : ""}
             </div>
-
         </Layout>
     );
 }

@@ -1,25 +1,24 @@
+import { ParagraphColumns } from "@/root/types";
 
-export default function ParagraphColumnsSlide() {
+interface ParagraphColumnsSlideProps {
+    data: ParagraphColumns;
+}
+export default function ParagraphColumnsSlide({data}:ParagraphColumnsSlideProps) {
     return (
-        <div className="relative">
+        <div className="relative h-96  w-3/4 m-4 bg-image ">
             <div className="absolute inset-0 flex justify-center items-center text-center">
                 <div className="text-black bg-Transparent text-center">
-                    <h1 className="text-4xl font-bold">TITULO</h1>
+                    <h1 className="text-4xl font-bold">{data.subTheme}</h1>
                     <div className="flex justify-center">
                         <div className="w-1/2">
-                            <p className="text-lg font-medium">PARRAFO 1</p>
+                            <p className="text-lg font-medium">{data.descripcion}</p>
                         </div>
                         <div className="w-1/2">
-                            <p className="text-lg font-medium">PARRAFO 2</p>
+                            <p className="text-lg font-medium">{data.descripcion2}</p>
                         </div>
                     </div>
                 </div>
             </div>
-            <img
-                className="object-cover"
-                src="/wave-haikei (3).png"
-                alt="Primary image"
-            />
         </div>
     );
     }
