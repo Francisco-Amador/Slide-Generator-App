@@ -8,14 +8,11 @@ import { Bulleted, ParagraphColumns } from "@/root/types";
 import { Paragraph } from "@/root/types";
 import { motion } from "framer-motion";
 export default function MainSlide() {
-    const { slide } = useSlideContext();
+    const { slide, setSlideContextResponse, setSlide } = useSlideContext();
 
-
-
-    useEffect(() => {
-        console.log(slide);
-    }, [slide])
-    const handleClick = () => {
+    const handleDelete = () => {
+        setSlideContextResponse("");
+        setSlide([]);
     }
     return (
         <motion.div
@@ -27,6 +24,7 @@ export default function MainSlide() {
             <h2 className="text-center m-4 text-3xl font-bold text-white">Your generated slides:</h2>
             <div className="border-2 p-2 border-slate-700 h-3/4 mt-10 lg:p-10 overflow-y-scroll grid justify-center items-center grid-cols-1 lg:grid-cols-2 gap-24 lg:mx-9">
                 {slide.map((slideItem: any, index) => {
+                    console.log(slideItem)
                     if (slideItem!.type == 1) {
                         const bulleted = slideItem as Bulleted;
                         return <BulletedSlide key={index} data={bulleted}></BulletedSlide>;
@@ -41,9 +39,7 @@ export default function MainSlide() {
                 })}
             </div>
             <div className="mt-4 flex justify-center">
-                <button className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" onClick={handleClick}>
-                    Delete Slides
-                </button>
+                <button className="text-white bg-gradient-to-r from-red-500 via-red-600 to-red-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" onClick={handleDelete}>Delete Slides</button>
             </div>
         </motion.div>
     );

@@ -2,6 +2,6 @@ export type  ParagraphColumns = {
         type:number;
         theme: string;
         subTheme: string;
-        descripcion1: string;
-        descripcion2: string;
+        description1: string;
+        description2: string;
 }

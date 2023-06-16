@@ -2,6 +2,6 @@ export type Paragraph = {
     type: number;
     theme: string;
     subTheme: string;
-    descripcion: string;
+    description: string;
 
 }

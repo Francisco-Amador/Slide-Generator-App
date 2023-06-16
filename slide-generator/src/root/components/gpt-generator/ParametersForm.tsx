@@ -19,7 +19,7 @@ export default function ParametersForm() {
     const initialValues: FormValues = {} as FormValues;
     const onSubmit = (values: FormValues) => {
         const { theme, type, language } = values;
-        const newParams = { language, countSubtheme: subThemesNumber, theme } as Parameters;
+        const newParams = { language, countSubtheme: subThemesNumber, theme, countSlide: subThemesNumber } as Parameters;
         setStore(newParams);
         const prompt = firstPrompt(subThemesNumber, theme, type, language)
         setSlideContextPrompt(prompt);

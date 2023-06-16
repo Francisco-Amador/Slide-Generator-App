@@ -26,7 +26,7 @@ export const ItemCounter = ({setCounter}:Props) => {
     };
 
     return (
-        <div className="flex p-4">
+        <div className="flex p-4 font-bold">
             <button type='button' className="border-2 border-purple-600 bg-white rounded-full  text-green-600 p-2" onClick={handleDecrement}>
                 <FontAwesomeIcon icon={faMinus} />
             </button>

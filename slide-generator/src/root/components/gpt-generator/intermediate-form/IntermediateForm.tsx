@@ -6,7 +6,7 @@ import CardThemeList from "./CardThemeList";
 import { motion } from "framer-motion"
 export function IntermediateForm() {
     const schemas = [1, 2, 3];
-    const { slideContextResponse, store, generateSlide } = useSlideContext();
+    const { slideContextResponse, store, generateSlide, setSlide, setSlideContextResponse } = useSlideContext();
     const subThemes = getSubThemes(slideContextResponse);
     const [selectedSchemas, setSelectedSchemas] = useState<number[]>([]);
     const [selectedSubThemes, setSelectedSubThemes] = useState<string[]>(subThemes);
@@ -22,8 +22,7 @@ export function IntermediateForm() {
         const newPrompts = await Promise.all(
             selectedSubThemes.slice(0, 10).map(async (subTheme) => {
                 const random = Math.floor(Math.random() * selectedSchemas.length);
-                const newPrompt = getPrompt(subTheme, random, store);
-                console.log(newPrompt);
+                const newPrompt = getPrompt(subTheme, selectedSchemas[random], store);
                 await setPrompts(prevPrompts => [...prevPrompts, newPrompt]);
                 return newPrompt;
             })
@@ -31,6 +30,10 @@ export function IntermediateForm() {
 
         generateSlide(newPrompts);
     };
+    const handleDelete = () => {
+        setSlideContextResponse("");
+        setSlide([]);
+    }
     return (
         <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -48,10 +51,9 @@ export function IntermediateForm() {
                 <h2 className="text-white text-center text-3xl font-bold mb-6">Your SubThemes:</h2>
                 <CardThemeList selectedSubThemes={selectedSubThemes} setSelectedSubThemes={setSelectedSubThemes} />
             </div>
-            <div className="mt-4">
-                <button className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" onClick={handleClick}>
-                    Generate Slides
-                </button>
+            <div className="mt-4 flex justify-center">
+                <button className="text-white bg-gradient-to-r from-red-500 via-red-600 to-red-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" onClick={handleDelete}>Back </button>
+                <button className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" onClick={handleClick}>Generate Slides</button>
             </div>
         </motion.div>
     );

@@ -12,17 +12,17 @@ export default function getPrompt(subtheme: string, schema: number, theme: Param
                         "type": 2,
                         "theme": theme.theme,
                         "subTheme": subtheme,
-                        "descripcion1": "minimo 15 palabras y maximo 16 palabras",
-                        "descripcion2": "minimo 15  palabras y maximo 16 palabras",
+                        "description1": "minimo 15 palabras y maximo 16 palabras",
+                        "description2": "minimo 15  palabras y maximo 16 palabras",
                 },
                 {
                         "type": 3,
                         "theme": theme.theme,
                         "subTheme": subtheme,
-                        "descripcion": "minimo 20 palabras y maximo 30",
+                        "description": "minimo 20 palabras y maximo 30",
                 },
         ];
-        const prompt = promptMap[schema];
+        const prompt = promptMap[schema-1];
         const promptText = JSON.stringify(prompt);
-        return `No interactúes conmigo, rellena lo que falta en el idioma ${theme.language}, dame solo un JSON: ${promptText}`;
+        return `No interactúes conmigo, rellena lo que falta solamente en el idioma ${theme.language}, dame solo un JSON completo no olvides cerrar el JSON ${promptText}`;
 }

@@ -1,5 +1,6 @@
 export type Parameters = {
     language: string,
     countSubtheme: number,
-    theme : string
+    theme : string,
+    countSlide: number,
 }
