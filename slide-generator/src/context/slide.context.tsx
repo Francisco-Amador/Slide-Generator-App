@@ -75,7 +75,7 @@ const getGPT = async (prompt1: string): Promise<string> => {
             top_p: 1,
             frequency_penalty: 0,
             presence_penalty: 0,
-            max_tokens: 200,
+            max_tokens: 400,
             n: 1,
         };
         try {

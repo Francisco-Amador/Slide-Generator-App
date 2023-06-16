@@ -8,11 +8,11 @@ interface ParagraphSlideProps {
 }
 export default function ParagraphSlide({data}:ParagraphSlideProps) {
     return (
-        <div className="relative m-4 h-64  w-96 bg-image">
-            <div className="absolute inset-0 flex justify-center items-center text-center">
+        <div className="h-96  w-full lg:m-4 text-white bg-image2 rounded-md ">
+            <div className="flex justify-center items-center text-center">
                 <div className="text-white bg-Transparent text-center">
-                    <h1 className="text-4xl font-bold">{data.subTheme} </h1>
-                    <p className="text-lg font-medium">{data.descripcion}</p>
+                    <h3 className="text-2xl lg:text-4xl font-bold my-10">{data.subTheme} </h3>
+                    <p className="text-sm lg:text-base mx-5 font-medium">{data.descripcion}</p>
                 </div>
             </div>
         </div>

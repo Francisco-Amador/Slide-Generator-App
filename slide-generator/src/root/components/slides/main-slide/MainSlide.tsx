@@ -18,9 +18,9 @@ export default function MainSlide() {
     const handleClick = () => {
     }
     return (
-        <div>
+        <div className="h-screen">
             <h2 className="text-center m-4 text-3xl font-bold  text-white">Your generated slides:</h2>
-            <div className="overflow-x-auto overflow-y-scroll max-h-96 h-full grid justify-center items-center grid-cols-1 sm:grid-cols-2 gap-40 mx-9 ">
+            <div className="border-2 p-2 border-red-700 h-3/4 mt-10 lg:p-10 overflow-y-scroll  grid justify-center items-center grid-cols-1 lg:grid-cols-2 gap-24 lg:mx-9 ">
                 {slide.map((slideItem: any, index) => {
                     if (slideItem!.type == 1) {
                         const bulleted = slideItem as Bulleted;
