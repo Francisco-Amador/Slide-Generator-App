@@ -6,36 +6,37 @@ import CardThemeList from "./CardThemeList";
 
 export function IntermediateForm() {
     const schemas = [1, 2, 3];
-    const { slideContextResponse , store } = useSlideContext();
+    const { slideContextResponse, store, generateSlide } = useSlideContext();
+
     const subThemes = getSubThemes(slideContextResponse);
     const [selectedSchemas, setSelectedSchemas] = useState<number[]>([]);
     const [selectedSubThemes, setSelectedSubThemes] = useState<string[]>(subThemes);
+    const [prompts, setPrompts] = useState<string[]>([])
     const handleSchemaChange = (schema: number) => {
         if (selectedSchemas.includes(schema)) {
             setSelectedSchemas(selectedSchemas.filter((item) => item !== schema));
-
         } else {
             setSelectedSchemas([...selectedSchemas, schema]);
-
-        }
-
-    };
-    const getRandomNumber = async () => {
-        return await Math.floor(Math.random() * selectedSchemas.length);
-    };
-    const handleClick = () => {
-
-        for (let i = 0; i < selectedSubThemes.length && i < 10; i++) {
-            const subTheme = selectedSubThemes[i];
-            const random = Math.floor(Math.random() * selectedSchemas.length);
-            console.log("")
-            const prompt = getPrompt(subTheme, random, store.theme);
-            console.log(prompt);
         }
     };
+
+    const handleClick = async () => {
+        const newPrompts = await Promise.all(
+            selectedSubThemes.slice(0, 10).map(async (subTheme) => {
+                const random = Math.floor(Math.random() * selectedSchemas.length);
+                const newPrompt = getPrompt(subTheme, random, store.theme);
+                console.log(newPrompt);
+                await setPrompts(prevPrompts => [...prevPrompts, newPrompt]);
+                return newPrompt;
+            })
+        );
+
+        generateSlide(newPrompts);
+    };
+
     return (
         <div >
-            <h2 className="text-white text-center text-3xl font-bold mb-6">Select your preferred subThemes and outline types (bullets, paragraphs, sentences)</h2>
+            <h2 className="text-white text-center text-3xl font-bold mb-6">Select your preferred subtopics and outline types (bullets, paragraphs, sentences)</h2>
             <div className="flex flex-row justify-center items-center">
                 {schemas.map((schema, index) => (
                     <CheckBoxSchema key={index} schema={schema} handleSchemaChange={handleSchemaChange} />

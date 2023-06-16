@@ -1,32 +1,54 @@
 import axios from "axios";
 import { createContext, useContext, useState, useEffect, Dispatch, SetStateAction } from "react";
-import {Parameters} from "@/root/types"
+import { Parameters } from "@/root/types"
+interface OpenAIResponse {
+    choices: { text: string }[];
+}
 export interface ContextState {
     slideContextPrompt: string;
     setSlideContextPrompt: Dispatch<SetStateAction<string>>;
     slideContextResponse: string;
     setSlideContextResponse: Dispatch<SetStateAction<string>>;
     setStore: Dispatch<SetStateAction<Parameters>>;
-    store:Parameters;
+    store: Parameters;
+    ///setSlideGeneratePrompt: Dispatch<SetStateAction<string>>;
+    slideGenerate: string[];
+    generateSlide: (prompts: string[]) => void;
 }
 
 export const SlideContext = createContext<ContextState>({} as ContextState);
 
 export const SlideProvider = ({ children }: { children: any }) => {
     const [slideContextPrompt, setSlideContextPrompt] = useState<string>('');
+        const [slideGeneratePrompt, setSlideGeneratePrompt] = useState<string>('');
     const [slideContextResponse, setSlideContextResponse] = useState<string>('');
-    const [store, setStore] = useState<Parameters>({ language: "", countSubtheme: 0 ,theme:""});
+    const [slideGenerate, setSlideGenerate] = useState<string[]>([]);
+    const [store, setStore] = useState<Parameters>({ language: "", countSubtheme: 0, theme: "" });
+
     useEffect(() => {
         const fetchData = async () => {
-            setSlideContextResponse(await getGPT(slideContextPrompt));
+            if (slideContextPrompt.length > 0) setSlideContextResponse(await getGPT(slideContextPrompt));
         };
-
         fetchData();
     }, [slideContextPrompt]);
 
+    const generateSlide = async (prompts: string[]) => {
+        console.log(prompts, "all prompt");
+        await Promise.all(
+            prompts.map(async (prompt) => {
+                console.log(prompt);
+                const newSlide = await getGPT(prompt);
+                setSlideGenerate([...slideGenerate, newSlide]);
+            })
+        );
+    };
+
+
     return (
-        <SlideContext.Provider value={{ slideContextPrompt, setSlideContextPrompt, slideContextResponse, setSlideContextResponse, 
-            store, setStore }}>
+        <SlideContext.Provider value={{
+            slideContextPrompt, setSlideContextPrompt, slideContextResponse, setSlideContextResponse,
+            store, setStore, slideGenerate, generateSlide
+        }}>
             {children}
         </SlideContext.Provider>
     );
@@ -39,6 +61,7 @@ export const useSlideContext = () => {
     }
     return context;
 };
+
 
 const getGPT = async (prompt1: string): Promise<string> => {
     try {
@@ -57,7 +80,6 @@ const getGPT = async (prompt1: string): Promise<string> => {
             max_tokens: 100,
             n: 1,
         };
-
         try {
             const response = await axios.post("https://api.openai.com/v1/completions", payload, {
                 headers: {
@@ -66,8 +88,8 @@ const getGPT = async (prompt1: string): Promise<string> => {
                 },
             });
             const json = response.data.choices[0].text as string;
-            console.log(json);
-            return json;
+            console.log(json.replace(/\n\n/g, ""), "API response");
+            return json.replace(/\n\n/g, "");
         } catch (error) {
             console.error(error);
             throw error;
