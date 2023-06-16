@@ -1,49 +1,53 @@
 import React from 'react';
 import Image from "next/image";
+import Link from 'next/link';
 export default function ProductSection() {
     return (
         <section className="bg-gray-900 text-white body-font">
-            <h1 className='text-center sm:text-3xl text-2xl'>Our Designs</h1>
-            <p className="lg:pl-6 lg:w-2/3 mx-auto leading-relaxed text-base">
-                Our innovative platform gives you the perfect tool to create impactful and professional presentations in minutes. With our system, you ll be able to generate copy-ready text in PowerPoint and apply custom styles to create visually appealing slides.Forget about tedious and boring work hours, and bring your presentations to life with our intuitive and easy-to-use platform. Now, you ll be able to grab your audience s attention and convey your ideas effectively. Join us and discover how to stand out in your presentations easily and successfully!
-            </p>
-            <div className=" px-5 py-24 mx-auto">
-                <div className="flex flex-wrap -mx-4 -mb-10 text-center">
-                    <div className="sm:w-1/2 mb-10 px-4">
-                        <div className="shadow-lg shadow-gray-800 rounded-lg h-64 overflow-hidden">
-                            <Image
-                                alt="content"
-                                className="object-cover object-center h-full w-full"
-                                src="/bus1.jpg"
-                                width={1201}
-                                height={501}
-                            />
-                        </div>
-                        <h2 className="title-font text-2xl font-medium text-gray-900 mt-6 mb-3">Buy YouTube Videos</h2>
-                        <p className="leading-relaxed text-base">Williamsburg occupy sustainable snackwave gochujang. Pinterest cornhole brunch, slow-carb neutra irony.</p>
-                        <button className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-white rounded-lg group bg-gradient-to-br from-purple-500 to-pink-500 group-hover:from-purple-500 group-hover:to-pink-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800">
-                            <span className="relative px-5 py-2.5 transition-all ease-in duration-75  bg-gray-900 rounded-md group-hover:bg-opacity-0">
-                                Purple to pink
-                            </span>
-                        </button>
+            <div className="container px-5 py-24 mx-auto">
+                <div className="flex flex-col">
+                    <div className="flex flex-wrap sm:flex-row flex-col py-6 mb-12">
+                        <h1 className="sm:w-2/5 text-white font-medium title-font text-2xl mb-2 sm:mb-0">Create Slide Text that Highlights and Communicates Clearly</h1>
+                        <p className="sm:w-3/5 leading-relaxed text-base sm:pl-10 pl-0">Our innovative slide text creation tool provides you with all the features needed to generate captivating and effective content. With our platform, you can transform your ideas into impactful messages and communicate your key concepts clearly and concisely.</p>
                     </div>
-                    <div className="sm:w-1/2 mb-10 px-4">
-                        <div className="shadow-lg shadow-gray-800 rounded-lg h-64 overflow-hidden">
-                            <Image
-                                alt="content"
-                                className="object-cover object-center h-full w-full"
-                                src="/bus2.jpg"
-                                width={1202}
-                                height={502}
-                            />
+                </div>
+                <h2 className="sm:w-2/5 text-white font-medium title-font text-2xl  mb-4">Our Designs:</h2>
+                <div className="flex flex-wrap sm:-m-4 -mx-4 -mb-10 -mt-4">
+                    <div className="p-4 md:w-1/3 sm:mb-0 mb-6">
+                        <div className="rounded-lg h-64 overflow-hidden">
+                            <Image width={1000} height={1000} src={"/paragraph-image.png"} alt="content" className="object-cover object-center h-full w-full" />
                         </div>
-                        <h2 className="title-font text-2xl font-medium text-gray-900 mt-6 mb-3">The Catalyzer</h2>
-                        <p className="leading-relaxed text-base">Williamsburg occupy sustainable snackwave gochujang. Pinterest cornhole brunch, slow-carb neutra irony.</p>
-                        <button className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-white rounded-lg group bg-gradient-to-br from-purple-500 to-pink-500 group-hover:from-purple-500 group-hover:to-pink-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800">
-                            <span className="relative px-5 py-2.5 transition-all ease-in duration-75  bg-gray-900 rounded-md group-hover:bg-opacity-0">
-                                Purple to pink
-                            </span>
-                        </button>
+                        <h2 className="text-xl font-medium title-font text-white mt-5">Paragraphs:</h2>
+                        <p className="text-base leading-relaxed mt-2">Our paragraph design allows you to present your ideas clearly and convincingly. With a clean and readable format, you can organize your content into blocks of text that will capture the attention of your audience. Highlights key points, provides relevant details, and develops strong arguments in well-structured paragraphs.</p>
+                        <Link href="#parametersForm" className="text-indigo-500 inline-flex items-center mt-3">Get Started
+                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                                <path d="M5 12h14M12 5l7 7-7 7"></path>
+                            </svg>
+                        </Link>
+                    </div>
+                    <div className="p-4 md:w-1/3 sm:mb-0 mb-6">
+                        <div className="rounded-lg h-64 overflow-hidden">
+                            <Image width={1000} height={1000} alt="content" className="object-cover object-center h-full w-full" src={"/bullet-image.png"}/>
+                        </div>
+                        <h2 className="text-xl font-medium title-font text-white mt-5">Bullets points:</h2>
+                        <p className="text-base leading-relaxed mt-2">Bullet points are a great way to highlight important information in a visually appealing way. Our app offers you a variety of bullet styles and layouts so you can choose the one that best suits your content. Use custom bullet points, icons, or markers to emphasize key points and make it easier for your audience to understand.</p>
+                        <Link href="#parametersForm" className="text-indigo-500 inline-flex items-center mt-3">Get Started
+                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                                <path d="M5 12h14M12 5l7 7-7 7"></path>
+                            </svg>
+                        </Link>
+                    </div>
+                    <div className="p-4 md:w-1/3 sm:mb-0 mb-6">
+                        <div className="rounded-lg h-64 overflow-hidden">
+                            <Image width={1000} height={1000} alt="content" className="object-cover object-center h-full w-full" src={"/paragraph-colums-image.png"}/>
+                        </div>
+                        <h2 className="text-xl font-medium title-font text-white mt-5">Paragraph Columns:</h2>
+                        <p className="text-base leading-relaxed mt-2">If you want to add a touch of dynamism to your slides, our two-column paragraphs are the perfect choice. This design allows you to present information in two distinct sections, making it easy to compare concepts, present pros and cons, or explore different points of view. It achieves a visual balance and provides a clear and organized structure to your ideas.</p>
+                        <Link href="#parametersForm" className="text-indigo-500 inline-flex items-center mt-3">Get Started
+                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                                <path d="M5 12h14M12 5l7 7-7 7"></path>
+                            </svg>
+                        </Link>
                     </div>
                 </div>
             </div>
