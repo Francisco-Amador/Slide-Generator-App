@@ -14,8 +14,7 @@ const CardThemeList = ({ selectedSubThemes, setSelectedSubThemes }: SelectedSubT
         }
     };
     return (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 ">
-
+        <div className="overflow-x-auto overflow-y-scroll max-h-96 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 ">
             {selectedSubThemes.slice(0, 10).map((subTheme, index) => (
                 removedIndexes.includes(index) ? (
                     <CardTheme key={index} subTheme={subTheme} handleSubThemeChange={handleSubThemeChange} index={index} />

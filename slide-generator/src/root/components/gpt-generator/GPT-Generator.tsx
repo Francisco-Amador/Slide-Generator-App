@@ -13,7 +13,7 @@ export default function Generator() {
     return (
         <Layout>
             <div className="w-full">
-                <ParametersForm />
+                {slideContextResponse.length < 1 ? (<ParametersForm />) : ""}
                 {slideContextResponse.length > 2 ? (slide.length > 0 ? (<MainSlide />) : (<IntermediateForm />)) : ""}
             </div>
         </Layout>
