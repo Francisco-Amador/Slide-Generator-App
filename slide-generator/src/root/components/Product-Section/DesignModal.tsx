@@ -21,7 +21,7 @@ export default function DesignModal({ isModalOpen, closeModal, imageSrc }: Modal
                     </svg>
                 </button>
                 <div className="flex items-center justify-center">
-                    <Image width={1000} height={1000} src={imageSrc} alt="content" className="max-w-full max-h-full" />
+                    <Image width={1500} height={1060} src={imageSrc} alt="content" className="max-w-full max-h-full" />
                 </div>
             </div>
         </Modal>

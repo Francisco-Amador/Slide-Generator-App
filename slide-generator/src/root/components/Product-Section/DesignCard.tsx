@@ -23,8 +23,8 @@ export default function DesignsCard({ design }: DesignsProps) {
             <div className="rounded-lg h-64 overflow-hidden">
                 <Image
                     src={design.imageSrc}
-                    width={1000}
-                    height={1000}
+                    width={1060}
+                    height={2300}
                     alt="content"
                     className="hover:scale-105 transform-gpu duration-200 cursor-pointer"
                     onClick={openModal}
