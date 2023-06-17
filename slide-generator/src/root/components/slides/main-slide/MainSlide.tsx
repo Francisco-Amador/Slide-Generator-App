@@ -18,7 +18,7 @@ export default function MainSlide() {
         <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 1 }}
             className="h-screen"
         >
             <h2 className="text-center m-4 text-3xl font-bold text-white">Your generated slides:</h2>

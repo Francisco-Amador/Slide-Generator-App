@@ -20,7 +20,7 @@ export default function DesignModal({ isModalOpen, closeModal, imageSrc }: Modal
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
-                <div className="flex items-center justify-center">
+                <div className=" flex items-center justify-center">
                     <Image width={1500} height={1060} src={imageSrc} alt="content" className="max-w-full max-h-full" />
                 </div>
             </div>

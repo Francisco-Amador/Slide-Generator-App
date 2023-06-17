@@ -1,7 +1,7 @@
 
 import { createContext, useContext, useState, useEffect, Dispatch, SetStateAction } from "react";
 import { Parameters } from "@/root/types"
-import getGPT from "./getGPTresponse";
+import { getGPT } from "./getGPTresponse";
 
 export interface ContextState {
     slideContextPrompt: string;
@@ -12,7 +12,9 @@ export interface ContextState {
     store: Parameters;
     generateSlide: (prompts: string[]) => void;
     setSlide: Dispatch<SetStateAction<JSON[]>>;
-    slide: JSON[]
+    slide: JSON[];
+    loading: boolean;
+
 }
 
 export const SlideContext = createContext<ContextState>({} as ContextState);
@@ -22,10 +24,11 @@ export const SlideProvider = ({ children }: { children: any }) => {
     const [slide, setSlide] = useState<JSON[]>([]);
     const [slideContextResponse, setSlideContextResponse] = useState<string>('');
     const [store, setStore] = useState<Parameters>({ language: "", countSubtheme: 0, theme: "", countSlide: 0 });
-
+    const [loading, setLoading] = useState<boolean>(false)
     useEffect(() => {
         const fetchData = async () => {
-            if (slideContextPrompt.length > 0) setSlideContextResponse(await getGPT(slideContextPrompt));
+
+            if (slideContextPrompt.length > 0) setSlideContextResponse(await getGPT(slideContextPrompt, setLoading));
         };
         fetchData();
     }, [slideContextPrompt]);
@@ -34,7 +37,7 @@ export const SlideProvider = ({ children }: { children: any }) => {
         console.log(prompts, "all prompt");
         await Promise.all(
             prompts.map(async (prompt) => {
-                const newSlide = await getGPT(prompt);
+                const newSlide = await getGPT(prompt, setLoading);
                 setSlide((prevSlide) => [...prevSlide, JSON.parse(newSlide)]);
             })
         );
@@ -44,7 +47,7 @@ export const SlideProvider = ({ children }: { children: any }) => {
     return (
         <SlideContext.Provider value={{
             slideContextPrompt, setSlideContextPrompt, slideContextResponse, setSlideContextResponse,
-            store, setStore, generateSlide, slide, setSlide
+            store, setStore, generateSlide, slide, setSlide, loading
         }}>
             {children}
         </SlideContext.Provider>

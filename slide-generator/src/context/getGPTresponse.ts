@@ -1,8 +1,9 @@
-import axios from "axios"; 
+import axios from "axios";
+import { useSlideContext } from "./slide.context";
 
-export default async function getGPT(prompt1: string): Promise<string> {
+export async function getGPT(prompt1: string, setLoading: (loading: boolean) => void): Promise<string> {
     try {
-      //  console.log(prompt1)
+        //  console.log(prompt1)
         if (prompt1.length < 2) {
             return ""
         }
@@ -18,12 +19,15 @@ export default async function getGPT(prompt1: string): Promise<string> {
             n: 1,
         };
         try {
+
+            setLoading(true);
+            console.log(process.env.OPENAI_API_KEY, "KEY")
             const response = await axios.post("https://api.openai.com/v1/completions", payload, {
                 headers: {
                     "Content-Type": "application/json",
-                    Authorization: "Bearer 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",//TODO pasarlo env
+                    Authorization: `Bearer ${process.env.NEXT_PUBLIC_OPENAI_API_KEY}`,
                 },
-            });
+            }).finally(() => { setLoading(false); });
             const json = response.data.choices[0].text as string;
             console.log(json.replace(/\n\n/g, ""), "API response");
             return json.replace(/\n\n/g, "");
