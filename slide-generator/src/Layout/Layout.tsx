@@ -1,7 +1,7 @@
 
 import { Footer } from "@/root/components";
-import NavBar from "@/root/components/NavBar/NavBar";
-import ProductSection from "@/root/components/Product-Section/ProductSection";
+import NavBar from "@/root/components/navbar/NavBar";
+import ProductSection from "@/root/components/product-section/ProductSection";
 
 import { ReactNode, useRef } from "react";
 

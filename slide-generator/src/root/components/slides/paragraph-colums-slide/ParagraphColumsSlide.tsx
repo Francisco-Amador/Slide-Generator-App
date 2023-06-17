@@ -1,11 +1,20 @@
 import { ParagraphColumns } from "@/root/types";
+import { faCopy } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import toast from "react-hot-toast";
 
 interface ParagraphColumnsSlideProps {
     data: ParagraphColumns;
 }
 export default function ParagraphColumnsSlide({ data }: ParagraphColumnsSlideProps) {
+    const handleCopyText = () => {
+        const textToCopy = data.subTheme + "\n" + data.description1 + "\n" + data.description2;
+        navigator.clipboard.writeText(textToCopy);
+        toast.success("Slide copy");
+    };
     return (
         <div className=" min-h-96 h-full  w-full lg:m-4 text-white bg-image3 rounded-md">
+            <div className="m-4 flex justify-end"><button className="h-5 w-16 " onClick={handleCopyText}> <FontAwesomeIcon icon={faCopy} className='' /></button></div>
             <h3 className="text-center text-xl md:text-2xl lg:text-4xl font-bold my-10">{data.subTheme}</h3>
             <div className=" flex justify-center items-center text-center">
                 <div className="flex justify-center text-justify h-64 p-4 mt-4">
