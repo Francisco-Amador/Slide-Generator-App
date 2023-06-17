@@ -21,7 +21,7 @@ export default function NavBar() {
                                 transition={{ duration: 0.3 }}
                             >
                                 <Link
-                                    to="parametersForm"
+                                    to="silidGenerator"
                                     smooth={true}
                                     duration={500}
                                     offset={-50}

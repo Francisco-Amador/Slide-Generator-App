@@ -33,7 +33,7 @@ export default function DesignsCard({ design }: DesignsProps) {
             </div>
             <h2 className="text-2xl font-medium text-white mt-5">{design.title}</h2>
             <p className="text-base leading-relaxed mt-2 text-gray-300">{design.description}</p>
-            <Link href="#parametersForm" className="text-indigo-500 inline-flex items-center mt-3">
+            <Link href="#silidGenerator" className="text-indigo-500 inline-flex items-center mt-3">
                 <motion.span
                     whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
                     whileTap={{ scale: 0.95 }}
