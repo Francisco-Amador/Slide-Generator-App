@@ -6,7 +6,7 @@ import { ItemCounter } from "../formik/ItemCounter";
 import { useState } from "react";
 import { useSlideContext } from "@/context/slide.context";
 import { Parameters, firstPrompt } from "@/root/"
-import { options, languages } from '@/root/selector'
+import { options, languages } from '@/root/static-data'
 import { motion } from "framer-motion";
 interface FormValues {
     theme: string;
@@ -34,7 +34,7 @@ export default function ParametersForm() {
         >
             <h2 className="text-white text-2xl font-bold mb-4 text-center">Parameters Form</h2>
             <p className="text-white text-center m-4">Add here your title and other parameters to generate your slides</p>
-            <Formik id="parametersForm" initialValues={initialValues} validationSchema={paramsMessage} onSubmit={onSubmit}>
+            <Formik initialValues={initialValues} validationSchema={paramsMessage} onSubmit={onSubmit}>
                 <Form className="shadow-lg shadow-gray-800 bg-gray-800 border-2 p-4 rounded-lg border-slate-700 flex flex-col justify-center sm:w-2/4">
                     <div className="flex flex-col justify-center items-center">
                         <CustomInput label="Theme:" name="theme" inputType="text" placeholder="Type a subject" />
@@ -62,7 +62,7 @@ export default function ParametersForm() {
                             className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
                             type="submit"
                         >
-                            Send
+                            Generate subtopic
                         </motion.button>
                     </div>
                 </Form>

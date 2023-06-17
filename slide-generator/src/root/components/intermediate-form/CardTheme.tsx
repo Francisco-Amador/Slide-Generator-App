@@ -11,7 +11,7 @@ export default function CardTheme({ subTheme, handleSubThemeChange, index }: sub
             <h2 className="text-lg text-white font-medium title-font mb-2 text-center">{subTheme}</h2>
             <div className="flex justify-center mt-4">
                 <button onClick={() => handleSubThemeChange(subTheme, index)} className=" bg-gray-700 hover:bg-blue-500  border-2 border-slate-700 text-white font-bold py-2 px-4 rounded">
-                    Delete subTheme
+                    Delete subtopic
                 </button>
             </div>
         </div>

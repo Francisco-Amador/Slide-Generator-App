@@ -1,23 +1,8 @@
 import React from 'react';
 import DesignsCard from './DesignCard';
+import { designs } from '@/root/static-data';
 export default function ProductSection() {
-    const designs = [
-        {
-            imageSrc: "/info1.png",
-            title: "Paragraphs",
-            description: "Our paragraph design allows you to present your ideas clearly and convincingly...",
-        },
-        {
-            imageSrc: "/info2.png",
-            title: "Bullet points",
-            description: "Bullet points are a great way to highlight important information in a visually appealing way...",
-        },
-        {
-            imageSrc: "/info3.png",
-            title: "Paragraph Columns",
-            description: "If you want to add a touch of dynamism to your slides, our two-column paragraphs are the perfect choice...",
-        },
-    ];
+
 
     return (
         <section className="p-6 bg-gray-900 text-white body-font">
