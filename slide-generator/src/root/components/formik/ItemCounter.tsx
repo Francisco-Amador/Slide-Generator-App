@@ -26,14 +26,14 @@ export const ItemCounter = ({setCounter}:Props) => {
     };
 
     return (
-        <div className="flex p-4 font-bold">
-            <button type='button' className="border-2 border-purple-600 bg-white rounded-full  text-green-600 p-2" onClick={handleDecrement}>
+        <div className="flex font-bold">
+            <button type='button' className=" h-7 w-7 border-2 mx-1 border-blue-500 bg-blue-800 rounded-full  text-black font-bold  " onClick={handleDecrement}>
                 <FontAwesomeIcon icon={faMinus} />
             </button>
 
-            <div className='text-white p-2'>{count}</div>
+            <div className='text-white font-bold mx-1 '>{count}</div>
 
-            <button type='button' className="border-2 border-purple-600 bg-white rounded-full  text-green-600 p-2 " onClick={handleIncrement}>
+            <button type='button' className=" h-7 w-7 border-2 mx-1 border-blue-500 bg-blue-800 rounded-full  text-black font-bold  " onClick={handleIncrement}>
                 <FontAwesomeIcon icon={faPlus} className=''/>
             </button>
         </div>

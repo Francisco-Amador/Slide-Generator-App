@@ -24,7 +24,7 @@ export default function ProductSection() {
             <div className="border-2 p-4 rounded-lg border-slate-700 shadow-lg shadow-gray-800 bg-gray-800 container px-5 py-24 mx-auto">
                 <div className="flex flex-col">
                     <div className="flex flex-wrap sm:flex-row flex-col py-6 mb-12">
-                        <h1 className="sm:w-2/5 text-white font-medium title-font text-2xl mb-2 sm:mb-0">
+                        <h1 className="sm:w-2/5 text-white  font-semibold text-3xl mb-2 sm:mb-0">
                             Create Slide Text that Highlights and Communicates Clearly
                         </h1>
                         <p className="sm:w-3/5 leading-relaxed text-base sm:pl-10 pl-0">

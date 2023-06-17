@@ -26,6 +26,7 @@ export default function ParametersForm() {
     }
     return (
         <motion.div
+            id="parametersForm"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -52,7 +53,7 @@ export default function ParametersForm() {
                             ))}
                         </CustomSelect>
                         <div className="flex flex-row m-4">
-                            <label className="text-white m-4 mr-2 p-2">SubThemes:</label>
+                            <label className="text-white  mr-2 ">SubThemes:</label>
                             <ItemCounter setCounter={setSubThemesNumber} />
                         </div>
                         <motion.button

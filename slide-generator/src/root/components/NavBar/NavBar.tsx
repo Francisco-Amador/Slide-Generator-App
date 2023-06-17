@@ -2,6 +2,7 @@ import Link from "next/link";
 import { motion } from 'framer-motion';
 import Image from "next/image";
 export default function NavBar() {
+
     return (
         <nav className=" p-4 bg-gradient-to-r from-purple-900 via-purple-800 to-purple-700 border-gray-200 dark:bg-gray-900">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
