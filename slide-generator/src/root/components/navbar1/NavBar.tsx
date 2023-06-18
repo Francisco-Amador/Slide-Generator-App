@@ -1,5 +1,4 @@
 import { Link } from 'react-scroll';
-
 import { motion } from 'framer-motion';
 import Image from "next/image";
 import LinkReact from 'next/link';
@@ -7,7 +6,11 @@ export default function NavBar() {
 
     return (
 
-        <nav className="bg-gradient-to-r from-purple-900 via-purple-800 to-purple-700 border-gray-200">
+        <motion.nav 
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+        className="bg-gradient-to-r from-purple-900 via-purple-800 to-purple-700 border-gray-200">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                 <LinkReact href="/" className="flex items-center h-16">
                     <Image width={100} height={100} src="/icon2.png" className="h-10 w-10 mr-3" alt="Flowbite Logo" />
@@ -27,7 +30,7 @@ export default function NavBar() {
                     </Link>
                 </div>
             </div>
-        </nav>
+        </motion.nav>
 
     );
 }

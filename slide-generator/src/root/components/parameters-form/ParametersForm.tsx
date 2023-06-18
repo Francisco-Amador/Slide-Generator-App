@@ -16,7 +16,7 @@ interface FormValues {
 export default function ParametersForm() {
     const [subThemesNumber, setSubThemesNumber] = useState<number>(10);
     const { setSlideContextPrompt, setStore } = useSlideContext();
-    const initialValues: FormValues = {} as FormValues;
+    const initialValues: FormValues = { theme:""} as FormValues;
     const onSubmit = (values: FormValues) => {
         const { theme, type, language } = values;
         const newParams = { language, countSubtheme: subThemesNumber, theme, countSlide: subThemesNumber } as Parameters;
@@ -26,7 +26,6 @@ export default function ParametersForm() {
     }
     return (
         <motion.div
-           
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}

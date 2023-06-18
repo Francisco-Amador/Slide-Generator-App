@@ -36,10 +36,16 @@ export const SlideProvider = ({ children }: { children: any }) => {
         setLoading(true);
         await Promise.all(
             prompts.map(async (prompt) => {
-
-                const newSlide = await getGPT(prompt);
-                setSlide((prevSlide) => [...prevSlide, JSON.parse(newSlide)]);
-
+                let parsedSlide: JSON;
+                while (true) {
+                    const newSlide = await getGPT(prompt);
+                    try {
+                        parsedSlide = JSON.parse(newSlide);
+                        break;
+                    } catch (error) {
+                    }
+                }
+                setSlide((prevSlide) => [...prevSlide, parsedSlide]);
             })
         );
         setLoading(false);
