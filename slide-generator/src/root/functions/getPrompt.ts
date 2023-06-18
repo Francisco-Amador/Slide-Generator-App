@@ -22,7 +22,7 @@ export default function getPrompt(subtheme: string, schema: number, theme: Param
                         "description": "minimo 20 palabras y maximo 30",
                 },
         ];
-        const prompt = promptMap[schema-1];
+        const prompt = promptMap[schema - 1];
         const promptText = JSON.stringify(prompt);
-        return `No interactúes conmigo, rellena lo que falta solamente en el idioma ${theme.language}, dame solo un JSON completo no olvides cerrar el JSON ${promptText}`;
+        return `Do not interact with me, only fill in the missing parts in the ${theme.language} language, give me only a complete JSON, don't forget to close the JSON ${promptText}`;
 }

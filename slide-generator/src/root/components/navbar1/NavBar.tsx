@@ -9,7 +9,7 @@ export default function NavBar() {
 
         <nav className="bg-gradient-to-r from-purple-900 via-purple-800 to-purple-700 border-gray-200">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-                <LinkReact href="https://flowbite.com/" className="flex items-center h-16">
+                <LinkReact href="/" className="flex items-center h-16">
                     <Image width={100} height={100} src="/icon2.png" className="h-10 w-10 mr-3" alt="Flowbite Logo" />
                     <span className="self-center  text-xs sm:text-2xl font-semibold whitespace-nowrap text-white">
                         Slide-Generator

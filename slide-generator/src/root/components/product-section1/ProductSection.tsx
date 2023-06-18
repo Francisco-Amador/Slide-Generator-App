@@ -1,11 +1,15 @@
 import React from 'react';
 import DesignsCard from './DesignCard';
 import { designs } from '@/root/static-data';
+import { motion } from 'framer-motion';
 export default function ProductSection() {
 
 
     return (
-        <section className="p-6 bg-gray-900 text-white body-font">
+        <motion.section
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }} className="p-6 bg-gray-900 text-white body-font">
             <div className="border-2 p-4 rounded-lg border-slate-700 shadow-lg shadow-gray-800 bg-gray-800 container px-5 py-24 mx-auto">
                 <div className="flex flex-col">
                     <div className="flex flex-wrap sm:flex-row flex-col py-6 mb-12">
@@ -24,6 +28,6 @@ export default function ProductSection() {
                     ))}
                 </div>
             </div>
-        </section>
+        </motion.section>
     );
 }

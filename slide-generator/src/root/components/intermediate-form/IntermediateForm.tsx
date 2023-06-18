@@ -49,7 +49,7 @@ export function IntermediateForm() {
                 ))}
             </div>
             <div>
-                <h2 className="text-white text-center text-3xl font-bold mb-6">Your SubThemes:</h2>
+                <h2 className="text-white text-center text-3xl font-bold mb-6">Your Subtopic:</h2>
                 <CardThemeList selectedSubThemes={selectedSubThemes} setSelectedSubThemes={setSelectedSubThemes} />
             </div>
             <div className="mt-4 w-1/3 flex justify-between">
