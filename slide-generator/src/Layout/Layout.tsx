@@ -1,7 +1,7 @@
 
 import { CallToAction, Footer } from "@/root/components";
-import NavBar from "@/root/components/navbar/NavBar";
-import ProductSection from "@/root/components/product-section/ProductSection";
+import NavBar from "@/root/components/navbar1/NavBar";
+import ProductSection from "@/root/components/product-section1/ProductSection";
 
 import { ReactNode, useRef } from "react";
 
