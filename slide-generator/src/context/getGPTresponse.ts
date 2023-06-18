@@ -3,7 +3,7 @@ import { useSlideContext } from "./slide.context";
 
 export async function getGPT(prompt1: string): Promise<string> {
     try {
-        //  console.log(prompt1)
+   
         if (prompt1.length < 2) {
             return ""
         }
@@ -21,7 +21,7 @@ export async function getGPT(prompt1: string): Promise<string> {
         try {
 
           
-            console.log(process.env.OPENAI_API_KEY, "KEY")
+        
             const response = await axios.post("https://api.openai.com/v1/completions", payload, {
                 headers: {
                     "Content-Type": "application/json",
@@ -29,7 +29,7 @@ export async function getGPT(prompt1: string): Promise<string> {
                 },
             })
             const json = response.data.choices[0].text as string;
-            console.log(json.replace(/\n\n/g, ""), "API response");
+        
             return json.replace(/\n\n/g, "");
         } catch (error) {
             console.error(error);

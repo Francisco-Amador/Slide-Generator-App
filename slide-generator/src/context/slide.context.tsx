@@ -33,7 +33,6 @@ export const SlideProvider = ({ children }: { children: any }) => {
     }, [slideContextPrompt]);
 
     const generateSlide = async (prompts: string[]) => {
-        console.log(prompts, "all prompt");
         setLoading(true);
         await Promise.all(
             prompts.map(async (prompt) => {
