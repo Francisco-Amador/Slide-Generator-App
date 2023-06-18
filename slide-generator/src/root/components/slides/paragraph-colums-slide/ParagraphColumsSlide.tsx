@@ -13,11 +13,11 @@ export default function ParagraphColumnsSlide({ data }: ParagraphColumnsSlidePro
         toast.success("Slide copy");
     };
     return (
-        <div className=" min-h-96 h-full  w-full lg:m-4 text-white bg-image3 rounded-md">
+        <div className=" sm:h-96 h-auto w-full lg:m-4 text-white bg-image3 rounded-md">
             <div className="m-4 flex justify-end"><button className="h-5 w-16 " onClick={handleCopyText}> <FontAwesomeIcon icon={faCopy} className='' /></button></div>
-            <h3 className="text-center text-xl md:text-2xl lg:text-4xl font-bold my-10">{data.subTheme}</h3>
-            <div className=" flex justify-center items-center text-center">
-                <div className="flex justify-center text-justify h-64 p-4 mt-4">
+            <h3 className="text-center text-xl md:text-2xl lg:text-4xl font-bold mb-10">{data.subTheme}</h3>
+            <div className=" flex justify-center h-auto items-center text-center">
+                <div className="flex justify-center text-justify min-h-64  h-auto p-4 mt-4">
                     <div className="w-1/2">
                         <p className="text-sm lg:text-lg mx-5 font-medium">{data.description1}</p>
                     </div>

@@ -13,7 +13,7 @@ export default function Footer() {
                     </div>
                     <ul className="flex flex-wrap items-center mb-6 text-sm font-medium text-white sm:mb-0 dark:text-gray-400">
                         <li>
-                            <Link href="#" className="mr-4 hover:underline md:mr-6 "><FontAwesomeIcon icon={faEnvelope} /></Link>
+                            <Link target="_blank" href="https://mail.google.com/mail/?view=cm&to=thebestslidegeneratos@gmail.com&su=&body=" className="mr-4 hover:underline md:mr-6 "><FontAwesomeIcon icon={faEnvelope} /></Link>
                         </li>
                         <li>
                             <Link href="https://www.facebook.com/login/" className="mr-4 hover:underline md:mr-6">
