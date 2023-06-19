@@ -34,7 +34,7 @@ export default function MainSlide() {
                         return <ParagraphColumnsSlide key={index} data={paragraphColumns}></ParagraphColumnsSlide>;
                     } else {
                         const paragraph = slideItem as Paragraph;
-                        if (slideItem.subTheme > 3) {
+                        if (slideItem.subTheme.length > 3) {
                             return <ParagraphSlide key={index} data={paragraph}></ParagraphSlide>;
                         }
                     }
