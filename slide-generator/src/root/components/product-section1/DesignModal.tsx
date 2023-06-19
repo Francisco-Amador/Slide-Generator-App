@@ -1,10 +1,10 @@
 import Modal from 'react-modal';
 import Image from "next/image";
 interface ModalProps {
-    isModalOpen: any;//Fix: Dont use any
-    closeModal: any;//Fix: Dont use any
+    isModalOpen: boolean;
+    closeModal: () => void;
     imageSrc: string;
-}
+  }
 export default function DesignModal({ isModalOpen, closeModal, imageSrc }: ModalProps) {
     return (
         <Modal

@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect, Dispatch, SetStateAction } from "react";
+import { createContext, useContext, useState, useEffect, Dispatch, SetStateAction, ReactNode } from "react";
 import { Parameters } from "@/root/types"
 import { getGPT } from "./getGPTresponse";
 
@@ -17,7 +17,7 @@ export interface ContextState {
 
 export const SlideContext = createContext<ContextState>({} as ContextState);
 
-export const SlideProvider = ({ children }: { children: any }) => {//Fix: Dont use any
+export const SlideProvider = ({ children }: { children: ReactNode }) => {
     const [slideContextPrompt, setSlideContextPrompt] = useState<string>('');
     const [slide, setSlide] = useState<JSON[]>([]);
     const [slideContextResponse, setSlideContextResponse] = useState<string>('');

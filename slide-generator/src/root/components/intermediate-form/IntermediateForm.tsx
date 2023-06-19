@@ -12,14 +12,14 @@ export function IntermediateForm() {
     const [selectedSubThemes, setSelectedSubThemes] = useState<string[]>(subThemes);
     const [prompts, setPrompts] = useState<string[]>([])
     const handleSchemaChange = (schema: number) => {
-        if (selectedSchemas.includes(schema)) {
-            if (selectedSchemas.length > 1) {//TODO: add readibility with two separate if
-                setSelectedSchemas(selectedSchemas.filter((item) => item !== schema));
-            }
-        } else {
+        const isSchemaSelected = selectedSchemas.includes(schema);
+        if (isSchemaSelected && selectedSchemas.length > 1) {
+            setSelectedSchemas(selectedSchemas.filter((item) => item !== schema));
+        } else if (!isSchemaSelected) {
             setSelectedSchemas([...selectedSchemas, schema]);
         }
     };
+
     const handleClick = async () => {
         const newPrompts = await Promise.all(
             selectedSubThemes.slice(0, store.countSubtheme).map(async (subTheme) => {
