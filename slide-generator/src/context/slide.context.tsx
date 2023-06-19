@@ -17,7 +17,7 @@ export interface ContextState {
 
 export const SlideContext = createContext<ContextState>({} as ContextState);
 
-export const SlideProvider = ({ children }: { children: any }) => {
+export const SlideProvider = ({ children }: { children: any }) => {//Fix: Dont use any
     const [slideContextPrompt, setSlideContextPrompt] = useState<string>('');
     const [slide, setSlide] = useState<JSON[]>([]);
     const [slideContextResponse, setSlideContextResponse] = useState<string>('');

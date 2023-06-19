@@ -13,7 +13,7 @@ export function IntermediateForm() {
     const [prompts, setPrompts] = useState<string[]>([])
     const handleSchemaChange = (schema: number) => {
         if (selectedSchemas.includes(schema)) {
-            if (selectedSchemas.length > 1) {
+            if (selectedSchemas.length > 1) {//TODO: add readibility with two separate if
                 setSelectedSchemas(selectedSchemas.filter((item) => item !== schema));
             }
         } else {
