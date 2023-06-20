@@ -1,6 +1,7 @@
 import { createContext, useContext, useState, useEffect, Dispatch, SetStateAction, ReactNode } from "react";
 import { Parameters } from "@/root/types"
 import { getGPT } from "./getGPTresponse";
+import { Slide } from "@/root/types/Slide.type";
 
 export interface ContextState {
     slideContextPrompt: string;
@@ -10,8 +11,8 @@ export interface ContextState {
     setStore: Dispatch<SetStateAction<Parameters>>;
     store: Parameters;
     generateSlide: (prompts: string[]) => void;
-    setSlide: Dispatch<SetStateAction<JSON[]>>;
-    slide: JSON[];
+    setSlide: Dispatch<SetStateAction<Slide[]>>;
+    slide: Slide[];
     loading: boolean;
 }
 
@@ -19,7 +20,7 @@ export const SlideContext = createContext<ContextState>({} as ContextState);
 
 export const SlideProvider = ({ children }: { children: ReactNode }) => {
     const [slideContextPrompt, setSlideContextPrompt] = useState<string>('');
-    const [slide, setSlide] = useState<JSON[]>([]);
+    const [slide, setSlide] = useState<Slide[]>([]);
     const [slideContextResponse, setSlideContextResponse] = useState<string>('');
     const [store, setStore] = useState<Parameters>({ language: "", countSubtheme: 0, theme: "", countSlide: 0 });
     const [loading, setLoading] = useState<boolean>(false)
@@ -36,7 +37,7 @@ export const SlideProvider = ({ children }: { children: ReactNode }) => {
         setLoading(true);
         await Promise.all(
             prompts.map(async (prompt) => {
-                let parsedSlide: JSON;
+                let parsedSlide: Slide;
                 while (true) {
                     const newSlide = await getGPT(prompt);
                     try {
